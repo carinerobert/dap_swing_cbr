@@ -43,7 +43,5 @@ public class DisplayClient extends JFrame {
 
         // pour rendre ma fenetre visible
         this.setVisible(true);
-
     }
-
 }

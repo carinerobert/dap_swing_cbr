@@ -48,12 +48,12 @@ public class ServerService {
     }
 
     ServerService(String userKey) throws Exception {
+      //TODO cbr by Djer |POO| Il n'est pas utile d'appelr ces méthodes si tu ne traite pas la valeur de retour
         ServerService.getData(userKey);
         ServerService.addAccount("http://localhost:8080/account/add/{userId}");
         // Desktop.getDesktop().browse(new URI("http://localhost:8080/account/add/pseudo"));
         ServerService.getDataUnread("/email/nbunread?userKey=" + userKey);
         ServerService.getDataEvent("/event/next?userKey=" + userKey);
-
     }
 
     static void getDataEvent(String userKey) {
@@ -63,6 +63,7 @@ public class ServerService {
             event = new URI(URL + "/event/next?userKey=" + userKey);
             browser.browse(event);
         } catch (URISyntaxException | IOException e) {
+          //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -77,19 +78,20 @@ public class ServerService {
             mail = new URI(URL + "/email/nbunread?userKey=" + userKey);
             browser.browse(mail);
         } catch (URISyntaxException | IOException e) {
+          //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
     static void addAccount(String userKey) {
-
         URI account;
         Desktop browser = Desktop.getDesktop();
         try {
             account = new URI(URL + "/account/add/" + userKey);
             browser.browse(account);
         } catch (URISyntaxException | IOException e) {
+          //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
