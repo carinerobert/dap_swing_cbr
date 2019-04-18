@@ -26,7 +26,6 @@ public class MenuPanel extends JPanel implements ActionListener {
     public JButton connect;
 
     public MenuPanel() {
-
         //On définit le layout à utiliser sur le content pane
         this.setLayout(new FlowLayout());
 
@@ -48,6 +47,7 @@ public class MenuPanel extends JPanel implements ActionListener {
         this.add(addButton);
     }
 
+    //TODO cbr by Djer |POO| je pense que cette méthode n'est plus utile (remplacé par "registerRefresh")
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == refreshButton) {
             new GmailPanel();
@@ -62,13 +62,11 @@ public class MenuPanel extends JPanel implements ActionListener {
 
         } else if (event.getSource() == addButton) {
             new AccountPanel();
-
         }
     }
 
     public void registerRefresh(ActionListener listener) {
         refreshButton.addActionListener(listener);
-
     }
 
 }

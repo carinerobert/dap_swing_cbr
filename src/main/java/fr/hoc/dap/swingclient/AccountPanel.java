@@ -20,7 +20,9 @@ import org.apache.logging.log4j.Logger;
  * @since 2019-03-21
  */
 @SuppressWarnings("serial")
+//TODO cbr by Djer |Swing| Cette classe devrait plutot s'appeler "AccountFrame"
 public class AccountPanel extends JFrame implements ActionListener {
+    //TODO cbr by Djer |JavaDoc| Le @author est inutile
     /**@author display errors.*/
     private static final Logger LOG = LogManager.getLogger();
 
@@ -28,7 +30,7 @@ public class AccountPanel extends JFrame implements ActionListener {
     public JTextField userNew = new JTextField();
 
     public AccountPanel() {
-
+        //TODO cbr by Djer |Swing| Il y a deja une instance de JButon dans ton attribut. Tu peux faire un : addUser.setText("Ajouter")
         addUser = new JButton("Ajouter");
         addUser.addActionListener(this);
         userNew.addActionListener(this);
@@ -53,17 +55,20 @@ public class AccountPanel extends JFrame implements ActionListener {
             final String userKey = userNew.getText();
 
             if (source == addUser) {
+              //TODO cbr by Djer |Swing| Si tu créer des Panel sans les Ajouter dans le Layout d'une Frame ils ne seront pas visibles.
                 new AccountPanel();
                 ServerService.addAccount(URL + userKey);
+                //TODO cbr by Djer |Swing| Si tu créer des Panel sans les Ajouter dans le Layout d'une Frame ils ne seront pas visibles.
                 new GmailPanel();
                 ServerService.getDataUnread(userKey);
+                //TODO cbr by Djer |Swing| Si tu créer des Panel sans les Ajouter dans le Layout d'une Frame ils ne seront pas visibles.
                 new EventPanel();
                 ServerService.getDataEvent(userKey);
 
-                LOG.info("connect" + userKey);
+                LOG.info("connect " + userKey);
             }
 
-            LOG.error("Connection aborted" + userKey);
+            LOG.error("Connection aborted " + userKey);
         }
     }
 }

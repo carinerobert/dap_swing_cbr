@@ -27,7 +27,6 @@ public class MultiUser extends JFrame implements ActionListener {
     public static String userKey;
 
     public MultiUser() {
-
         connect = new JButton("Connection");
         connect.addActionListener(this);
         this.setSize(360, 100);
@@ -55,6 +54,7 @@ public class MultiUser extends JFrame implements ActionListener {
                 // TODO, ouvre les infos mail au premier clic, et event au deuxième. (normal l'adresse est en dur pour le display)
 
             } catch (Exception e) {
+              //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }

@@ -18,13 +18,13 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("serial")
 public class EventPanel extends JPanel implements ActionListener {
+    //TODO cbr by Djer |POO| Il faut préciser la porté de ton attribut sinon il aura la porté de la Classe par defaut (très très souvent "public")
     String userKey = "mecrob"; // TODO adresse en dur 
     String nextEvent = null;
     String URL = "http://localhost:8080/event/next?userKey=";
     private JLabel lbl3;
 
     public EventPanel() {
-
         try {
             nextEvent = ServerService.getData(URL + userKey);
         } catch (Exception e) {
@@ -36,7 +36,6 @@ public class EventPanel extends JPanel implements ActionListener {
         this.add(new JLabel("Votre prochain évènement : "));
         lbl3 = new JLabel(nextEvent);
         this.add(lbl3);
-
     }
 
     @Override

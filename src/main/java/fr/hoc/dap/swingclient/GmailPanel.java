@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GmailPanel extends JPanel implements ActionListener {
 
+  //TODO cbr by Djer |POO| Il faut préciser la porté de ton attribut sinon il aura la porté de la Classe par defaut (très très souvent "public")
     String nbUnread = null;
     String URL = "http://localhost:8080//email/nbunread?userKey=";
 
@@ -25,7 +26,6 @@ public class GmailPanel extends JPanel implements ActionListener {
     String userKey = "mecrob"; // TODO adresse en dur 
 
     public GmailPanel() {
-
         try {
             nbUnread = ServerService.getData(URL + userKey);
         } catch (Exception e) {
