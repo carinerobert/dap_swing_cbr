@@ -15,23 +15,18 @@ import org.apache.logging.log4j.Logger;
  * The application DisplayClient
  * displays mails & events from an user on google's account
  * it could add new user too !
- * @author house_Mecrob
- * @version 1.0
- * @since 2019-03-21
  */
 @SuppressWarnings("serial")
-//TODO cbr by Djer |Swing| Cette classe devrait plutot s'appeler "AccountFrame"
-public class AccountPanel extends JFrame implements ActionListener {
-    //TODO cbr by Djer |JavaDoc| Le @author est inutile
-    /**@author display errors.*/
+public class AccountFrame extends JFrame implements ActionListener {
+
+    /** display messages for dev in a file.*/
     private static final Logger LOG = LogManager.getLogger();
 
     public JButton addUser = new JButton();
     public JTextField userNew = new JTextField();
 
-    public AccountPanel() {
-        //TODO cbr by Djer |Swing| Il y a deja une instance de JButon dans ton attribut. Tu peux faire un : addUser.setText("Ajouter")
-        addUser = new JButton("Ajouter");
+    public AccountFrame() {
+        addUser.setText("Ajouter");
         addUser.addActionListener(this);
         userNew.addActionListener(this);
         //        JButton enter = new JButton("Entrer");
@@ -55,15 +50,21 @@ public class AccountPanel extends JFrame implements ActionListener {
             final String userKey = userNew.getText();
 
             if (source == addUser) {
-              //TODO cbr by Djer |Swing| Si tu créer des Panel sans les Ajouter dans le Layout d'une Frame ils ne seront pas visibles.
-                new AccountPanel();
+                //TODO S AFFICHE DANS LE BROWSER 50% resolu cbr by Djer |Swing| Si tu créer des Panel sans les Ajouter dans le Layout d'une Frame ils ne seront pas visibles.
+                // new AccountFrame();
+                new MenuPanel();
                 ServerService.addAccount(URL + userKey);
+                this.setLayout(new GridLayout());
+
                 //TODO cbr by Djer |Swing| Si tu créer des Panel sans les Ajouter dans le Layout d'une Frame ils ne seront pas visibles.
                 new GmailPanel();
                 ServerService.getDataUnread(userKey);
+                this.setLayout(new GridLayout());
+
                 //TODO cbr by Djer |Swing| Si tu créer des Panel sans les Ajouter dans le Layout d'une Frame ils ne seront pas visibles.
                 new EventPanel();
                 ServerService.getDataEvent(userKey);
+                this.setLayout(new GridLayout());
 
                 LOG.info("connect " + userKey);
             }

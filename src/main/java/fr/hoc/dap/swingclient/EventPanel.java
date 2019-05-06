@@ -9,19 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * The application DisplayClient
- * displays mails & events from an user account on google
- * it could add new user too !
- * @author house_Mecrob
- * @version 1.0
- * @since 2019-03-21
+ * The EventPanel display mails & events from an user account on google
  */
 @SuppressWarnings("serial")
 public class EventPanel extends JPanel implements ActionListener {
-    //TODO cbr by Djer |POO| Il faut préciser la porté de ton attribut sinon il aura la porté de la Classe par defaut (très très souvent "public")
-    String userKey = "mecrob"; // TODO adresse en dur 
-    String nextEvent = null;
-    String URL = "http://localhost:8080/event/next?userKey=";
+    private String userKey = "mecrob"; // TODO MOI adresse en dur 
+    private String nextEvent = null;
+    private String URL = "http://localhost:8080/event/next?userKey=";
     private JLabel lbl3;
 
     public EventPanel() {

@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
 * The application DisplayClient
 * displays mails&events from an user account on google
@@ -18,9 +21,9 @@ import javax.swing.JTextField;
 */
 public class MultiUser extends JFrame implements ActionListener {
 
-    /**
-     * 
-     */
+    /** display messages for dev in a file.*/
+    private static final Logger LOG = LogManager.getLogger();
+
     private static final long serialVersionUID = 1L;
     public JButton connect;
     public JTextField user = new JTextField();
@@ -51,12 +54,10 @@ public class MultiUser extends JFrame implements ActionListener {
             try {
                 ServerService.getDataUnread(userKey);
                 ServerService.getDataEvent(userKey);
-                // TODO, ouvre les infos mail au premier clic, et event au deuxième. (normal l'adresse est en dur pour le display)
 
             } catch (Exception e) {
-              //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                // e.printStackTrace();
+                LOG.info("", e);
             }
         }
     }

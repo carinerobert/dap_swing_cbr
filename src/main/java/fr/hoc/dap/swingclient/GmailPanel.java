@@ -18,12 +18,11 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GmailPanel extends JPanel implements ActionListener {
 
-  //TODO cbr by Djer |POO| Il faut préciser la porté de ton attribut sinon il aura la porté de la Classe par defaut (très très souvent "public")
-    String nbUnread = null;
+    protected String nbUnread = null;
     String URL = "http://localhost:8080//email/nbunread?userKey=";
 
     private JLabel lbl2;
-    String userKey = "mecrob"; // TODO adresse en dur 
+    String userKey = "mecrob"; // TODO MOI adresse en dur 
 
     public GmailPanel() {
         try {

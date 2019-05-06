@@ -41,7 +41,6 @@ public class DisplayClient extends JFrame {
         this.getContentPane().add(mailPan, BorderLayout.CENTER);
         this.getContentPane().add(eventPan, BorderLayout.SOUTH);
 
-        // pour rendre ma fenetre visible
         this.setVisible(true);
     }
 }

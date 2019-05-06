@@ -12,10 +12,6 @@ import javax.swing.border.EmptyBorder;
 /**
  * The application DisplayClient
  * displays mails & events from an user account on google
- * it could add new user too !
- * @author house_Mecrob
- * @version 1.0
- * @since 2019-03-21
  */
 @SuppressWarnings("serial")
 public class MenuPanel extends JPanel implements ActionListener {
@@ -47,26 +43,31 @@ public class MenuPanel extends JPanel implements ActionListener {
         this.add(addButton);
     }
 
-    //TODO cbr by Djer |POO| je pense que cette méthode n'est plus utile (remplacé par "registerRefresh")
-    public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == refreshButton) {
-            new GmailPanel();
-            new EventPanel();
-
-        } else if (event.getSource() == userButton) {
-            new MultiUser();
-        }
-        if (event.getSource() == connect) {
-            new GmailPanel();
-            new EventPanel();
-
-        } else if (event.getSource() == addButton) {
-            new AccountPanel();
-        }
-    }
+    //    // cbr by Djer |POO| je pense que cette méthode n'est plus utile (remplacé par "registerRefresh")
+    //  public void actionPerformed(ActionEvent event) {
+    //        if (event.getSource() == refreshButton) {
+    //            new GmailPanel();
+    //            new EventPanel();
+    //
+    //            } if (event.getSource() == userButton) {
+    //                new MultiUser();
+    //            }
+    //            if (event.getSource() == connect) {
+    //                new GmailPanel();
+    //                new EventPanel();
+    //    
+    //            } else if (event.getSource() == addButton) {
+    //                new AccountFrame();
+    //            }
+    //        }
 
     public void registerRefresh(ActionListener listener) {
         refreshButton.addActionListener(listener);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+
     }
 
 }

@@ -9,6 +9,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * The application DisplayClient
  * displays mails & events from an user account on google
@@ -19,6 +22,8 @@ import java.net.URL;
  */
 public class ServerService {
     private static final String URL = "http://localhost:8080/";
+    /**Logger display messages for dev in a file.*/
+    private static final Logger LOG = LogManager.getLogger();
 
     /**
      * Let's build our connection !
@@ -31,7 +36,7 @@ public class ServerService {
         BufferedReader reader;
         StringBuilder stringBuilder;
 
-        url = new URL(myurl); // TODO pb multi user
+        url = new URL(myurl); // TODO MOI pb multi user
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setReadTimeout(15 * 1000);
@@ -47,14 +52,13 @@ public class ServerService {
 
     }
 
-    ServerService(String userKey) throws Exception {
-      //TODO cbr by Djer |POO| Il n'est pas utile d'appelr ces méthodes si tu ne traite pas la valeur de retour
-        ServerService.getData(userKey);
-        ServerService.addAccount("http://localhost:8080/account/add/{userId}");
-        // Desktop.getDesktop().browse(new URI("http://localhost:8080/account/add/pseudo"));
-        ServerService.getDataUnread("/email/nbunread?userKey=" + userKey);
-        ServerService.getDataEvent("/event/next?userKey=" + userKey);
-    }
+    //    ServerService(String userKey) throws Exception {
+    //        ServerService.getData(userKey);
+    //        ServerService.addAccount("http://localhost:8080/account/add/{userId}");
+    //        // Desktop.getDesktop().browse(new URI("http://localhost:8080/account/add/pseudo"));
+    //        ServerService.getDataUnread("/email/nbunread?userKey=" + userKey);
+    //        ServerService.getDataEvent("/event/next?userKey=" + userKey);
+    //    }
 
     static void getDataEvent(String userKey) {
         URI event;
@@ -63,9 +67,8 @@ public class ServerService {
             event = new URI(URL + "/event/next?userKey=" + userKey);
             browser.browse(event);
         } catch (URISyntaxException | IOException e) {
-          //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // e.printStackTrace();
+            LOG.info("nextEvent error", e);
         }
 
     }
@@ -78,9 +81,8 @@ public class ServerService {
             mail = new URI(URL + "/email/nbunread?userKey=" + userKey);
             browser.browse(mail);
         } catch (URISyntaxException | IOException e) {
-          //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // e.printStackTrace();
+            LOG.info("unreadEmail error", e);
         }
     }
 
@@ -91,9 +93,8 @@ public class ServerService {
             account = new URI(URL + "/account/add/" + userKey);
             browser.browse(account);
         } catch (URISyntaxException | IOException e) {
-          //TODO cbr by Djer |Gestion Exception| Utilise un Logger pluto que le .printStackTrace() qui affiche directement (en crade) dans la console
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            //e.printStackTrace();
+            LOG.info("accountAdd error", e);
         }
     }
 
